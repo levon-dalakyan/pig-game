@@ -5,3 +5,7 @@ const score1El = document.querySelector('.score--1');
 const current0El = document.querySelector('.current--0');
 const current1El = document.querySelector('.current--1');
 const dice = document.querySelector('.dice');
+
+let activePlayer = 0;
+let current = 0;
+let scores = [0, 0];
