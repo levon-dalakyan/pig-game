@@ -10,14 +10,26 @@ const player1El = document.querySelector(`.player--1`);
 const diceEl = document.querySelector('.dice');
 const btnRoll = document.querySelector('.btn--roll');
 const btnHold = document.querySelector('.btn--hold');
+const btnNew = document.querySelector('.btn--new');
 
-let activePlayer = 0;
-let current = 0;
-let scores = [0, 0];
-let playGame = true;
+let activePlayer, current, scores, playGame;
 
-score0El.textContent = 0;
-score1El.textContent = 0;
+const init = function () {
+  activePlayer = 0;
+  current = 0;
+  scores = [0, 0];
+  playGame = true;
+
+  score0El.textContent = 0;
+  score1El.textContent = 0;
+  current0El.textContent = 0;
+  current1El.textContent = 0;
+  player0El.classList.remove('player--winner');
+  player0El.classList.add('player--active');
+  player1El.classList.remove('player--winner', 'player--active');
+  diceEl.classList.remove('hidden');
+};
+init();
 
 const togglePlayer = function () {
   current = 0;
@@ -51,7 +63,7 @@ btnHold.addEventListener('click', function () {
     document.querySelector(`#score--${activePlayer}`).textContent =
       scores[activePlayer];
 
-    if (scores[activePlayer] >= 20) {
+    if (scores[activePlayer] >= 100) {
       document
         .querySelector(`.player--${activePlayer}`)
         .classList.add('player--winner');
@@ -62,4 +74,8 @@ btnHold.addEventListener('click', function () {
       togglePlayer();
     }
   }
+});
+
+btnNew.addEventListener('click', function () {
+  init();
 });
