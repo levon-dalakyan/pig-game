@@ -24,6 +24,7 @@ const init = function () {
   score1El.textContent = 0;
   current0El.textContent = 0;
   current1El.textContent = 0;
+
   player0El.classList.remove('player--winner');
   player0El.classList.add('player--active');
   player1El.classList.remove('player--winner', 'player--active');
@@ -33,7 +34,7 @@ init();
 
 const togglePlayer = function () {
   current = 0;
-  document.querySelector(`#current--${activePlayer}`).textContent = current;
+  document.querySelector(`#current--${activePlayer}`).textContent = 0;
 
   activePlayer = activePlayer === 0 ? 1 : 0;
 
@@ -76,6 +77,4 @@ btnHold.addEventListener('click', function () {
   }
 });
 
-btnNew.addEventListener('click', function () {
-  init();
-});
+btnNew.addEventListener('click', init);
